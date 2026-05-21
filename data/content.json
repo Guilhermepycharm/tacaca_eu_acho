@@ -120,7 +120,7 @@
   "footer": {
     "text": "Feito com carinho paraense",
     "links": [
-      { "label": "Sobre", "href": "#" },
+      { "label": "Sobre", "href": "https://github.com/Guilhermepycharm/tacaca_eu_acho" },
       { "label": "Contato", "href": "#" },
       { "label": "Créditos", "href": "#" }
     ]
