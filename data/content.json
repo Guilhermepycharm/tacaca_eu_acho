@@ -1,0 +1,118 @@
+{
+  "meta": {
+    "title": "Tacacá — Sabor da Amazônia",
+    "description": "Descubra o tacacá: história, preparo e a cultura por trás do prato mais emblemático do Pará."
+  },
+  "nav": {
+    "logo": "Tacacá",
+    "links": [
+      { "label": "Origem", "href": "#historia" },
+      { "label": "Preparo", "href": "#preparo" },
+      { "label": "Benefícios", "href": "#beneficios" },
+      { "label": "Galeria", "href": "#galeria" }
+    ]
+  },
+  "hero": {
+    "title": "Tacacá",
+    "subtitle": "O sabor ancestral da Amazônia em cada cuia"
+  },
+  "intro": {
+    "text": "Mais que um prato, o tacacá é um ritual. Nasce do tucupi extraído da mandioca brava, ganha vida com o jambu que dormece a língua e se completa com o camarão seco que carrega séculos de tradição paraense. Cada cuia é uma história servida à beira do rio."
+  },
+  "preparo": {
+    "title": "Como é feito",
+    "subtitle": "Quatro ingredientes, séculos de sabedoria",
+    "steps": [
+      {
+        "number": 1,
+        "title": "Tucupi",
+        "text": "O caldo dourado extraído da mandioca brava, fermentado e cozido lentamente. É a alma do tacacá — sem ele, não existe prato.",
+        "image": "preparo/fazendo-tucupi.jpg"
+      },
+      {
+        "number": 2,
+        "title": "Goma de tapioca",
+        "text": "A goma dá a textura cremosa e encorpada. Misturada ao tucupi quente, forma a base aveludada que envolve cada colherada.",
+        "image": "preparo/fazendo-goma.jpeg"
+      },
+      {
+        "number": 3,
+        "title": "Jambu",
+        "text": "A folha que dormece. O jambu traz uma leve dormência nos lábios — uma experiência sensorial única que só existe na Amazônia.",
+        "image": "preparo/jambu.jpg"
+      },
+      {
+        "number": 4,
+        "title": "Camarão seco",
+        "text": "O toque final. Camarão seco torrado e quebrado à mão, adicionado por cima junto com pimenta-de-cheiro. O equilíbrio perfeito entre salgado e picante.",
+        "image": "preparo/camarao-seco.webp"
+      }
+    ]
+  },
+  "historia": {
+    "title": "Origens",
+    "subtitle": "Um prato que nasceu com a floresta",
+    "paragraphs": [
+      "O tacacá tem raízes indígenas profundas. Os povos da Amazônia já preparavam o tucupi e o jambu muito antes da colonização — a mandioca brava era alimento sagrado, e seu processamento, um conhecimento transmitido de geração em geração.",
+      "O nome vem do tupi antigo e o prato atravessou séculos sem perder a essência. Hoje, é encontrado em Belém do Pará principalmente nas tacacazeiras — barracas simples onde o tacacá é servido em cuias, sempre quente, sempre à mão.",
+      "Em 2024, o tacacá foi reconhecido como patrimônio imaterial do Brasil. Mas para os paraenses, sempre foi. É café da manhã, é saudade de casa, é identidade."
+    ],
+    "image": "historia/mercado.webp"
+  },
+  "beneficios": {
+    "title": "Benefícios e curiosidades",
+    "subtitle": "Ciência encontra tradição",
+    "cards": [
+      {
+        "icon": "nutrient",
+        "title": "Rico em vitamina A",
+        "text": "O tucupi é fonte natural de betacaroteno, essencial para a visão e imunidade."
+      },
+      {
+        "icon": "leaf",
+        "title": "Anti-inflamatório natural",
+        "text": "O jambu tem propriedades analgésicas e anti-inflamatórias usadas na medicina popular amazônica."
+      },
+      {
+        "icon": "protein",
+        "title": "Proteína magra",
+        "text": "O camarão seco oferece proteína de alta qualidade com pouca gordura."
+      },
+      {
+        "icon": "fire",
+        "title": "Acelera o metabolismo",
+        "text": "A pimenta-de-cheiro contém capsaicina, que estimula a queima calórica."
+      },
+      {
+        "icon": "gut",
+        "title": "Saúde intestinal",
+        "text": "A goma de tapioca é rica em amido resistente, que nutre a flora intestinal."
+      },
+      {
+        "icon": "history",
+        "title": "Milhares de anos",
+        "text": "Estudos arqueológicos indicam consumo de tucupi na Amazônia há mais de 2.000 anos."
+      }
+    ]
+  },
+  "galeria": {
+    "title": "Galeria",
+    "subtitle": "Imagens do prato mais paraense do Brasil",
+    "images": [
+      { "alt": "Tacacá servido em cuia", "src": "galeria/cuia.jpg" },
+      { "alt": "Tacacazeira tradicional em Belém", "src": "galeria/tacacazeira.jpeg" },
+      { "alt": "Ingredientes do tacacá", "src": "galeria/ingrendientes.jpeg" },
+      { "alt": "Mercado do Ver-o-Peso", "src": "galeria/mercado-ver-o-peso.jpg" },
+      { "alt": "Preparo artesanal do tucupi", "src": "galeria/preparo-tucupi.jpg" },
+      { "alt": "Jambu fresco", "src": "galeria/jamub.jpeg" }
+    ]
+  },
+  "footer": {
+    "text": "Feito com carinho paraense",
+    "links": [
+      { "label": "Sobre", "href": "#" },
+      { "label": "Contato", "href": "#" },
+      { "label": "Créditos", "href": "#" }
+    ]
+  }
+}

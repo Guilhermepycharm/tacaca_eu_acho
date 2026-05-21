@@ -1,0 +1,15 @@
+<nav class="nav" id="nav">
+  <div class="nav__inner">
+    <a href="#" class="nav__logo"><%= content.nav.logo %></a>
+    <button class="nav__toggle" id="nav-toggle" aria-label="Menu" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <div class="nav__links" id="nav-links">
+      <% content.nav.links.forEach(link => { %>
+        <a href="<%= link.href %>"><%= link.label %></a>
+      <% }) %>
+    </div>
+  </div>
+</nav>

@@ -1,0 +1,21 @@
+<section class="preparo" id="preparo">
+  <div class="container">
+    <div class="preparo__header">
+      <p class="section-label reveal">Preparo</p>
+      <h2 class="section-title reveal"><%= content.preparo.title %></h2>
+      <p class="section-subtitle reveal"><%= content.preparo.subtitle %></p>
+    </div>
+    <div class="preparo__timeline">
+      <% content.preparo.steps.forEach((step, i) => { %>
+        <div class="preparo__step reveal reveal-delay-<%= i + 1 %>">
+          <div class="preparo__number"><%= step.number %></div>
+          <div class="preparo__content">
+            <h3><%= step.title %></h3>
+            <p><%= step.text %></p>
+            <img class="preparo__image" src="/img/<%= step.image %>" alt="<%= step.title %>" loading="lazy">
+          </div>
+        </div>
+      <% }) %>
+    </div>
+  </div>
+</section>

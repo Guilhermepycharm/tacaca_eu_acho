@@ -1,0 +1,17 @@
+<section class="historia" id="historia">
+  <div class="container">
+    <div class="historia__header">
+      <p class="section-label reveal">Origens</p>
+      <h2 class="section-title reveal"><%= content.historia.title %></h2>
+      <p class="section-subtitle reveal"><%= content.historia.subtitle %></p>
+    </div>
+    <div class="historia__grid">
+      <div class="historia__text">
+        <% content.historia.paragraphs.forEach((paragraph, i) => { %>
+          <p class="reveal reveal-delay-<%= i + 1 %>"><%= paragraph %></p>
+        <% }) %>
+      </div>
+      <img class="historia__image reveal" src="/img/<%= content.historia.image %>" alt="História do tacacá" loading="lazy">
+    </div>
+  </div>
+</section>

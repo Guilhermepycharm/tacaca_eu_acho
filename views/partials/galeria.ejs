@@ -1,0 +1,14 @@
+<section class="galeria" id="galeria">
+  <div class="container container--wide">
+    <div class="galeria__header">
+      <p class="section-label reveal">Imagens</p>
+      <h2 class="section-title reveal"><%= content.galeria.title %></h2>
+      <p class="section-subtitle reveal"><%= content.galeria.subtitle %></p>
+    </div>
+    <div class="galeria__grid">
+      <% content.galeria.images.forEach((img, i) => { %>
+        <img class="galeria__item reveal reveal-delay-<%= (i % 3) + 1 %>" src="/img/<%= img.src %>" alt="<%= img.alt %>" loading="lazy">
+      <% }) %>
+    </div>
+  </div>
+</section>

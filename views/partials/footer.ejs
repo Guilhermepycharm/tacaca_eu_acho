@@ -1,0 +1,12 @@
+<footer class="footer">
+  <div class="container">
+    <div class="footer__inner">
+      <p class="footer__text"><%= content.footer.text %></p>
+      <div class="footer__links">
+        <% content.footer.links.forEach(link => { %>
+          <a href="<%= link.href %>"><%= link.label %></a>
+        <% }) %>
+      </div>
+    </div>
+  </div>
+</footer>
