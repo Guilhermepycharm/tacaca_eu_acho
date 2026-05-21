@@ -107,6 +107,16 @@
       { "alt": "Jambu fresco", "src": "galeria/jamub.jpeg" }
     ]
   },
+  "equipe": [
+    { "nome": "Yasmin Lorena", "github": "https://github.com/yasminlorena" },
+    { "nome": "Guilherme Aguiar", "github": "https://github.com/guilhermeaguiar" },
+    { "nome": "Maria Valentina", "github": "https://github.com/mariavalentina" },
+    { "nome": "Joao Miguel", "github": "https://github.com/joaomiguel" },
+    { "nome": "Jeninifer Victoria", "github": "https://github.com/jeninifervictoria" },
+    { "nome": "Geovana Jackson", "github": "https://github.com/geovanajackson" },
+    { "nome": "Yudi Miranda", "github": "https://github.com/yudimiranda" },
+    { "nome": "Juliana Santos", "github": "https://github.com/julianasantos" }
+  ],
   "footer": {
     "text": "Feito com carinho paraense",
     "links": [

@@ -421,6 +421,42 @@
   border-top: 1px solid rgba(200, 150, 46, 0.1);
 }
 
+/* bloco da equipe no footer */
+.footer__equipe {
+  text-align: center;
+  margin-bottom: var(--space-lg);
+}
+
+.footer__equipe-label {
+  font-size: var(--text-xs);
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold-deep);
+  margin-bottom: var(--space-md);
+}
+
+.footer__equipe-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-sm) var(--space-md);
+}
+
+.footer__membro {
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+  transition: color 0.2s ease;
+  padding: var(--space-xs);
+  min-height: 48px;
+  display: inline-flex;
+  align-items: center;
+}
+
+.footer__membro:hover {
+  color: var(--gold);
+}
+
 .footer__inner {
   display: flex;
   justify-content: space-between;

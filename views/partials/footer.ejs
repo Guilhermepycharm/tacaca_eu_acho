@@ -1,5 +1,15 @@
 <footer class="footer">
   <div class="container">
+    <div class="footer__equipe">
+      <p class="footer__equipe-label">Equipe</p>
+      <div class="footer__equipe-grid">
+        <% content.equipe.forEach(membro => { %>
+          <a href="<%= membro.github %>" class="footer__membro" target="_blank" rel="noopener">
+            <%= membro.nome %>
+          </a>
+        <% }) %>
+      </div>
+    </div>
     <div class="footer__inner">
       <p class="footer__text"><%= content.footer.text %></p>
       <div class="footer__links">
