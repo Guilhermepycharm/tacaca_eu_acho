@@ -1,22 +1,53 @@
 <footer class="footer">
-  <div class="container">
-    <div class="footer__equipe">
-      <p class="footer__equipe-label">Equipe</p>
-      <div class="footer__equipe-grid">
-        <% content.equipe.forEach(membro => { %>
-          <a href="<%= membro.github %>" class="footer__membro" target="_blank" rel="noopener">
-            <%= membro.nome %>
-          </a>
+  <div class="footer__showcase">
+    <div class="footer__showcase-bg"></div>
+    <div class="footer__showcase-overlay"></div>
+    <div class="footer__showcase-content">
+      <p class="section-label reveal">Quem fez</p>
+      <h2 class="footer__group-name reveal">Nossa Equipe</h2>
+      <div class="footer__marquee" aria-hidden="true">
+        <div class="footer__marquee-track">
+          <% content.equipe.forEach(membro => { %>
+            <span class="footer__marquee-item"><%= membro.nome %></span>
+            <span class="footer__marquee-dot"></span>
+          <% }) %>
+          <% content.equipe.forEach(membro => { %>
+            <span class="footer__marquee-item"><%= membro.nome %></span>
+            <span class="footer__marquee-dot"></span>
+          <% }) %>
+        </div>
+      </div>
+      <div class="footer__members reveal">
+        <% content.equipe.forEach((membro, i) => { %>
+          <% if (membro.github) { %>
+            <a href="<%= membro.github %>" class="footer__member reveal reveal-delay-<%= (i % 4) + 1 %>" target="_blank" rel="noopener" aria-label="GitHub de <%= membro.nome %>">
+              <span class="footer__member-avatar"><%= membro.nome.charAt(0) %></span>
+              <span class="footer__member-name"><%= membro.nome %></span>
+              <svg class="footer__member-gh" viewBox="0 0 24 24" aria-hidden="true"><use href="#gh-icon"/></svg>
+            </a>
+          <% } else { %>
+            <span class="footer__member footer__member--plain reveal reveal-delay-<%= (i % 4) + 1 %>">
+              <span class="footer__member-avatar"><%= membro.nome.charAt(0) %></span>
+              <span class="footer__member-name"><%= membro.nome %></span>
+            </span>
+          <% } %>
         <% }) %>
       </div>
     </div>
-    <div class="footer__inner">
-      <p class="footer__text"><%= content.footer.text %></p>
-      <div class="footer__links">
-        <% content.footer.links.forEach(link => { %>
-          <a href="<%= link.href %>"><%= link.label %></a>
-        <% }) %>
+  </div>
+
+  <div class="footer__sobre">
+    <div class="container">
+      <div class="footer__sobre-inner">
+        <div class="footer__sobre-text">
+          <p><%= content.footer.sobre %></p>
+        </div>
+        <a href="<%= content.footer.site %>" class="footer__repo-link" target="_blank" rel="noopener" aria-label="Ver código no GitHub">
+          <svg class="footer__repo-icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#gh-icon"/></svg>
+          <span class="footer__repo-label">Ver código</span>
+        </a>
       </div>
+      <p class="footer__credit"><%= content.footer.text %></p>
     </div>
   </div>
 </footer>

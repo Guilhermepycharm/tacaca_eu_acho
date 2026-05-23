@@ -1,6 +1,10 @@
 :root {
   --gold: #C8962E;
   --gold-deep: #8B6914;
+  --gold-glow: rgba(200, 150, 46, 0.15);
+  --gold-subtle: rgba(200, 150, 46, 0.06);
+  --gold-border: rgba(200, 150, 46, 0.2);
+  --gold-border-light: rgba(200, 150, 46, 0.12);
   --bg-dark: #1A1408;
   --bg-mid: #2C2110;
   --text: #F5E6C8;

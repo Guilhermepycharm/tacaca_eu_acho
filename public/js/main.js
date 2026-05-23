@@ -1,18 +1,13 @@
-const revealElements = document.querySelectorAll('.reveal');
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('revealed');
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
 
-const revealObserver = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('revealed');
-        revealObserver.unobserve(entry.target);
-      }
-    });
-  },
-  { threshold: 0.15, rootMargin: '0px 0px -50px 0px' }
-);
-
-revealElements.forEach((el) => revealObserver.observe(el));
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
 const heroBg = document.getElementById('hero-bg');
 const nav = document.getElementById('nav');
@@ -21,46 +16,47 @@ const scrollProgress = document.getElementById('scroll-progress');
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 let scrollScheduled = false;
 
+const NAV_SCROLL_THRESHOLD = 50;
+const BACK_TO_TOP_THRESHOLD = 600;
+const QUIZ_ADVANCE_DELAY = 800;
+
 function handleScroll() {
-  if (!scrollScheduled) {
-    requestAnimationFrame(() => {
-      const scrollY = window.scrollY;
+  if (scrollScheduled) return;
+  scrollScheduled = true;
 
-      // para o parallax quando o hero saiu da tela
-      if (heroBg && !prefersReducedMotion && scrollY < window.innerHeight) {
-        heroBg.style.transform = `translateY(${scrollY * 0.3}px)`;
-      }
+  requestAnimationFrame(() => {
+    const scrollY = window.scrollY;
 
-      if (nav) {
-        nav.classList.toggle('scrolled', scrollY > 50);
-      }
+    if (heroBg && !prefersReducedMotion && scrollY < window.innerHeight) {
+      heroBg.style.transform = `translateY(${scrollY * 0.3}px)`;
+    }
 
-      // back-to-top
-      if (backToTop) {
-        backToTop.classList.toggle('visible', scrollY > 600);
-      }
+    if (nav) {
+      nav.classList.toggle('scrolled', scrollY > NAV_SCROLL_THRESHOLD);
+    }
 
-      // scroll progress
-      if (scrollProgress) {
-        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-        scrollProgress.style.width = docHeight > 0 ? `${(scrollY / docHeight) * 100}%` : '0%';
-      }
+    if (backToTop) {
+      backToTop.classList.toggle('visible', scrollY > BACK_TO_TOP_THRESHOLD);
+    }
 
-      scrollScheduled = false;
-    });
-    scrollScheduled = true;
-  }
+    if (scrollProgress) {
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      scrollProgress.style.width = docHeight > 0 ? `${(scrollY / docHeight) * 100}%` : '0%';
+    }
+
+    scrollScheduled = false;
+  });
 }
 
 window.addEventListener('scroll', handleScroll, { passive: true });
 
-// back-to-top click
 if (backToTop) {
   backToTop.addEventListener('click', () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 }
 
+// menu mobile
 const navToggle = document.getElementById('nav-toggle');
 const navLinks = document.getElementById('nav-links');
 
@@ -79,12 +75,11 @@ if (navToggle && navLinks) {
     document.body.style.overflow = isOpen ? 'hidden' : '';
   });
 
-  navLinks.querySelectorAll('a').forEach((link) => {
+  navLinks.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', closeMenu);
   });
 
-  // fecha o menu se clicar fora
-  document.addEventListener('click', (e) => {
+  document.addEventListener('click', e => {
     if (navLinks.classList.contains('open') &&
         !navLinks.contains(e.target) &&
         !navToggle.contains(e.target)) {
@@ -93,24 +88,13 @@ if (navToggle && navLinks) {
   });
 }
 
-document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-  anchor.addEventListener('click', (e) => {
-    const hash = anchor.getAttribute('href');
-    if (hash === '#') return;
-
-    const target = document.querySelector(hash);
-    if (target) {
-      e.preventDefault();
-      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  });
-});
-
-// nav active section
+// seção ativa no nav
 const sections = document.querySelectorAll('section[id]');
 const navLinksAll = document.querySelectorAll('.nav__links a');
+const SECTION_OBSERVER_THRESHOLD = 0.3;
+
 if (sections.length && navLinksAll.length) {
-  const sectionObserver = new IntersectionObserver((entries) => {
+  const sectionObserver = new IntersectionObserver(entries => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         navLinksAll.forEach(link => {
@@ -118,21 +102,24 @@ if (sections.length && navLinksAll.length) {
         });
       }
     });
-  }, { threshold: 0.3 });
+  }, { threshold: SECTION_OBSERVER_THRESHOLD });
   sections.forEach(s => sectionObserver.observe(s));
 }
 
 // quiz
-(function() {
-  const container = document.getElementById('quiz-container');
-  if (!container) return;
+const quizContainer = document.getElementById('quiz-container');
 
-  const questions = container.querySelectorAll('.quiz__question');
-  const result = document.getElementById('quiz-result');
+if (quizContainer) {
+  const questions = quizContainer.querySelectorAll('.quiz__question');
+  const quizResult = document.getElementById('quiz-result');
   const restartBtn = document.getElementById('quiz-restart');
   const currentEl = document.getElementById('quiz-current');
   let current = 0;
   let score = 0;
+
+  const optionsByQuestion = Array.from(questions).map(q =>
+    q.querySelectorAll('.quiz__option')
+  );
 
   function showQuestion(index) {
     questions.forEach(q => q.classList.remove('active'));
@@ -144,9 +131,10 @@ if (sections.length && navLinksAll.length) {
     questions.forEach(q => q.classList.remove('active'));
     const total = questions.length;
     const pct = score / total;
-    const scoreEl = result.querySelector('.quiz__score');
-    const msgEl = result.querySelector('.quiz__message');
-    scoreEl.textContent = `${score}/${total}`;
+
+    quizResult.querySelector('.quiz__score').textContent = `${score}/${total}`;
+
+    const msgEl = quizResult.querySelector('.quiz__message');
     if (pct === 1) {
       msgEl.textContent = 'Perfeito! Você é um expert em tacacá!';
     } else if (pct >= 0.6) {
@@ -154,25 +142,26 @@ if (sections.length && navLinksAll.length) {
     } else {
       msgEl.textContent = 'Pode aprender mais! Leia as seções acima.';
     }
-    result.hidden = false;
+
+    quizResult.hidden = false;
   }
 
-  questions.forEach((q) => {
-    const answer = parseInt(q.dataset.answer);
-    const options = q.querySelectorAll('.quiz__option');
-    options.forEach((btn) => {
+  questions.forEach((q, qi) => {
+    const answer = parseInt(q.dataset.answer, 10);
+    const options = optionsByQuestion[qi];
+
+    options.forEach(btn => {
       btn.addEventListener('click', () => {
-        const picked = parseInt(btn.dataset.option);
-        // disable all options
-        options.forEach(o => o.disabled = true);
-        // mark correct/wrong
+        const picked = parseInt(btn.dataset.option, 10);
+
+        options.forEach(o => { o.disabled = true; });
         options[answer].classList.add('correct');
         if (picked !== answer) {
           btn.classList.add('wrong');
         } else {
           score++;
         }
-        // next question after delay
+
         setTimeout(() => {
           current++;
           if (current < questions.length) {
@@ -180,7 +169,7 @@ if (sections.length && navLinksAll.length) {
           } else {
             showResult();
           }
-        }, 800);
+        }, QUIZ_ADVANCE_DELAY);
       });
     });
   });
@@ -189,14 +178,16 @@ if (sections.length && navLinksAll.length) {
     restartBtn.addEventListener('click', () => {
       current = 0;
       score = 0;
-      result.hidden = true;
-      questions.forEach(q => {
-        q.querySelectorAll('.quiz__option').forEach(btn => {
+      quizResult.hidden = true;
+
+      optionsByQuestion.forEach(options => {
+        options.forEach(btn => {
           btn.disabled = false;
           btn.classList.remove('correct', 'wrong');
         });
       });
+
       showQuestion(0);
     });
   }
-})();
+}

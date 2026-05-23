@@ -7,7 +7,7 @@
     </div>
     <div class="quiz__container reveal" id="quiz-container">
       <% content.quiz.questions.forEach((q, i) => { %>
-        <div class="quiz__question<%= i === 0 ? ' active' : '' %>" data-index="<%= i %>" data-answer="<%= q.answer %>">
+        <div class="quiz__question<%= i === 0 ? ' active' : '' %>" data-answer="<%= q.answer %>">
           <p class="quiz__q-text"><%= q.q %></p>
           <div class="quiz__options">
             <% q.options.forEach((opt, j) => { %>
