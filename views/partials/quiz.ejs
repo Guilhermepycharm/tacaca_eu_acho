@@ -1,0 +1,29 @@
+<section class="quiz" id="quiz">
+  <div class="container">
+    <div class="quiz__header">
+      <p class="section-label reveal">Teste-se</p>
+      <h2 class="section-title reveal"><%= content.quiz.title %></h2>
+      <p class="section-subtitle reveal"><%= content.quiz.subtitle %></p>
+    </div>
+    <div class="quiz__container reveal" id="quiz-container">
+      <% content.quiz.questions.forEach((q, i) => { %>
+        <div class="quiz__question<%= i === 0 ? ' active' : '' %>" data-index="<%= i %>" data-answer="<%= q.answer %>">
+          <p class="quiz__q-text"><%= q.q %></p>
+          <div class="quiz__options">
+            <% q.options.forEach((opt, j) => { %>
+              <button class="quiz__option" data-option="<%= j %>"><%= opt %></button>
+            <% }) %>
+          </div>
+        </div>
+      <% }) %>
+      <div class="quiz__result" id="quiz-result" hidden>
+        <p class="quiz__score"></p>
+        <p class="quiz__message"></p>
+        <button class="quiz__restart" id="quiz-restart">Tentar de novo</button>
+      </div>
+      <div class="quiz__progress">
+        <span id="quiz-current">1</span> / <span id="quiz-total"><%= content.quiz.questions.length %></span>
+      </div>
+    </div>
+  </div>
+</section>

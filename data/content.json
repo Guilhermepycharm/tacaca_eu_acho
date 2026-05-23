@@ -107,6 +107,37 @@
       { "alt": "Jambu fresco", "src": "galeria/jamub.jpeg" }
     ]
   },
+  "quiz": {
+    "title": "Quanto você sabe sobre tacacá?",
+    "subtitle": "Teste seus conhecimentos sobre esse prato paraense",
+    "questions": [
+      {
+        "q": "Qual é o principal ingrediente do tacacá?",
+        "options": ["Tucupi", "Açaí", "Farinha", "Castanha"],
+        "answer": 0
+      },
+      {
+        "q": "De qual região o tacacá é originário?",
+        "options": ["Sudeste", "Nordeste", "Norte", "Centro-Oeste"],
+        "answer": 2
+      },
+      {
+        "q": "Qual planta dá o sabor picante ao tacacá?",
+        "options": ["Pimenta biquinho", "Jambu", "Cipó", "Urucum"],
+        "answer": 1
+      },
+      {
+        "q": "O tucupi é feito de quê?",
+        "options": ["Milho fermentado", "Mandioca brava", "Açaí", "Tapioca"],
+        "answer": 1
+      },
+      {
+        "q": "Como é servido tradicionalmente o tacacá?",
+        "options": ["Em prato fundo", "Em cuia", "Em vaso de barro", "Em Tigela de madeira"],
+        "answer": 1
+      }
+    ]
+  },
   "equipe": [
     { "nome": "Yasmin Lorena", "github": "https://github.com/yasminlorena" },
     { "nome": "Guilherme Aguiar", "github": "https://github.com/guilhermeaguiar" },
