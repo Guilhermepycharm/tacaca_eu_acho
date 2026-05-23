@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://tacaca-site.netlify.app/sitemap.xml
